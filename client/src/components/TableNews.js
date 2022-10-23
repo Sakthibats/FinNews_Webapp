@@ -4,10 +4,10 @@ function TableNews(props) {
     console.log(props.items)
     return (
         <>
-            <div>Latest news about: {props.topic}</div>
-            <table className='table table-striped'>
+            <h3>Latest news about: <span className='text-info'>{props.topic}</span></h3>
+            <table className='table'>
                 <thead>
-                    <tr>
+                    <tr className='table-dark'>
                         <th scope="col">Title</th>
                         <th scope="col">Sentiment</th>
                         <th scope="col">Publisher</th>
@@ -17,9 +17,9 @@ function TableNews(props) {
                 <tbody>
                     {props.items.map((ele)=>{
                         return (
-                            <tr key={ele.title+ele.publisher+ele.datetime}>
+                            <tr key={ele.title+ele.publisher+ele.datetime} className={ele.sentiment==="Negative"?"table-danger":(ele.sentiment==="Positive"?"table-success":null)}>
                                 <td>{ele.title}</td>
-                                <td>{ele.sentiment}</td>
+                                <td className={ele.sentiment==="Negative"?"fw-bold text-danger":(ele.sentiment==="Positive"?"fw-bold text-success":null)}>{ele.sentiment}</td>
                                 <td>{ele.publisher}</td>
                                 <td>{ele.datetime.split("T")[0]}</td>
                             </tr>

@@ -1,9 +1,9 @@
 import requests
 import yaml
 import math
-dic = yaml.safe_load(open("config.yaml"))
-API_URL = "https://api-inference.huggingface.co/models/ProsusAI/finbert"
-headers = {"Authorization": "Bearer {}".format(dic["Token"])}
+# dic = yaml.safe_load(open("config.yaml"))
+# API_URL = "https://api-inference.huggingface.co/models/ProsusAI/finbert"
+# headers = {"Authorization": "Bearer {}".format(dic["Token"])}
 
 import joblib
 
@@ -20,10 +20,11 @@ def HFquery(payload):
 		# 	elif i["label"]=='negative':
 		# 		score -= i['score']
 		# return round(score, 2)
-		val = model([payload])
+		val = model([payload])[0]
+		# print(val)
 		return val["label"]
 	except:
-		return 0
+		return "Neutral"
 
 
 output = HFquery("I like you")

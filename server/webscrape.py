@@ -34,24 +34,26 @@ async def search(query):
             publisher = item.find('div')[1].element.find('a').text
             title = newsitem.text
             link = list(newsitem.absolute_links)[0]
+            senti = HFquery(title)
             newsarticle = {
                 'title': title,
                 'link': link, 
                 'datetime': timestamp,
                 'publisher': publisher, 
+                'sentiment': senti
             }
             newslist.append(newsarticle)
         except:
             pass
     # newslist = sorted(list(newslist), key=lambda x: x["datetime"], reverse=True) 
-    newslist = list(newslist)
-    for i in range(len(newslist)):
-        try:    
-            words = newslist[i]['title']
-            senti = HFquery(words)
-            newslist[i]['sentiment'] = senti
-        except:
-            continue
+    # newslist = list(newslist)
+    # for i in range(len(newslist)):
+    #     try:    
+    #         words = newslist[i]['title']
+    #         senti = HFquery(words)
+    #         newslist[i]['sentiment'] = senti
+    #     except:
+    #         continue
 
     json_str = json.dumps(list(newslist))
 
