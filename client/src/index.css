@@ -1,0 +1,13 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    text-align: center;
+    align-content: center;
+    padding: 2%;
+}
+
+.fullapp{
+    height: 100vh;
+    display: flex;
+}
