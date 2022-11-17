@@ -44,16 +44,7 @@ async def search(query):
             }
             newslist.append(newsarticle)
         except:
-            pass
-    # newslist = sorted(list(newslist), key=lambda x: x["datetime"], reverse=True) 
-    # newslist = list(newslist)
-    # for i in range(len(newslist)):
-    #     try:    
-    #         words = newslist[i]['title']
-    #         senti = HFquery(words)
-    #         newslist[i]['sentiment'] = senti
-    #     except:
-    #         continue
+            pass 
 
     json_str = json.dumps(list(newslist))
 
