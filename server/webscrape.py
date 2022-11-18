@@ -45,6 +45,7 @@ async def search(query):
             newslist.append(newsarticle)
         except:
             pass 
+    newslist = sorted(newslist, key=lambda x:x["datetime"], reverse=True)
 
     json_str = json.dumps(list(newslist))
 
