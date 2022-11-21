@@ -25,7 +25,7 @@ function Search() {
   }
 
   return (
-    <div className="main">
+    <div className="d-flex main mb-3">
       <h3>Search Stock Topic</h3>
       <form onSubmit={test}>
         <div className="input-group input-group-lg mt-4">

@@ -46,6 +46,7 @@ async def search(query):
         except:
             pass 
     newslist = sorted(newslist, key=lambda x:x["datetime"], reverse=True)
+    chartdata = {}
 
     json_str = json.dumps(list(newslist))
 
