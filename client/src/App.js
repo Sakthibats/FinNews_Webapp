@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className='fullapp'>
-      <div className="container">
+      <div className="d-flex flex-column container">
         <BrowserRouter>
           <Header />
           <Routes>

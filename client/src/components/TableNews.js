@@ -1,4 +1,5 @@
 import React from 'react'
+import Chart from './Chart'
 
 
 function TableNews(props) {
@@ -7,6 +8,7 @@ function TableNews(props) {
     return (
         <div className='d-flex flex-column'>
             <h3>Latest news about: <span className='text-info'>{props.topic}</span></h3>
+            <Chart data ={props.item} />
             <div className='d-flex'>
                 <table className='table table-hover'>
                     <thead>
