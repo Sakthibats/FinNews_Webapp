@@ -1,15 +1,41 @@
 .main{
     display: flex;
     flex-direction: column;
-    height: 80%;
+    min-height: 100vh;
+    background-color: white;
     text-align: center;
     align-content: center;
     padding: 2%;
 }
+.navbarbg{
+    background: linear-gradient(223deg, #070a38, #171719);
+
+}
 
 .fullapp{
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
+    background: linear-gradient(223deg, #b62f57, #8c00ff, #ff9900);
+    background-size: 600% 600%;
+    -webkit-animation: AnimationName 20s ease infinite;
+    -moz-animation: AnimationName 20s ease infinite;
+    animation: AnimationName 20s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
 }
 
 .linkable{

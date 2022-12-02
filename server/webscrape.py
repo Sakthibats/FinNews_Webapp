@@ -34,13 +34,13 @@ async def search(query):
             publisher = item.find('div')[1].element.find('a').text
             title = newsitem.text
             link = list(newsitem.absolute_links)[0]
-            senti = HFquery(title)
+            # senti = HFquery(title)
             newsarticle = {
                 'title': title,
                 'link': link, 
                 'datetime': timestamp,
                 'publisher': publisher, 
-                'sentiment': senti
+                # 'sentiment': senti
             }
             newslist.append(newsarticle)
         except:

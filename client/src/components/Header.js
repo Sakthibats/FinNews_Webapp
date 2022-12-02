@@ -9,10 +9,10 @@ function Header() {
   const splitLocation = pathname.split("/");
 
   return (
-    <nav className="navbar navbar-dark bg-dark align-items-end" style={{"height":"10vh"}}>
+    <nav className="navbar navbar-dark align-items-end navbarbg rounded-3 mb-3 mt-2" style={{"height":"10vh"}}>
       <div className="container-md">
         <a className="navbar-brand fs-2" href="/">Stock News Tracking</a>
-        <ul className="nav justify-content-end nav-pills">
+        <ul className="nav justify-content-end">
           <li className="nav-item">
             <a className={splitLocation[1] === "" ? "nav-link active" : "nav-link"} href="/">Searches</a>
           </li>
