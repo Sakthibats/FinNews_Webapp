@@ -14,7 +14,7 @@ function Header() {
         <a className="navbar-brand fs-2" href="/">Stock News Tracking</a>
         <ul className="nav justify-content-end">
           <li className="nav-item">
-            <a className={splitLocation[1] === "" ? "nav-link active" : "nav-link"} href="/">Searches</a>
+            <a className={splitLocation[1] === "" ? "nav-link active" : "nav-link"} href="/search">Searches</a>
           </li>
         </ul>
       </div>

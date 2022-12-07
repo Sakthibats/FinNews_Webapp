@@ -1,8 +1,10 @@
 import React from 'react'
-import Header from './components/Header';
-import Search from './components/Search';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from './components/Header';
 import { InfoProvider } from './Context';
+import Enter from './pages/Enter';
+import LandingPage from './pages/LandingPage';
+import Search from './components/Search';
 
 
 function App(){
@@ -20,7 +22,9 @@ function AppContainer() {
         <BrowserRouter>
           <Header />
           <Routes>
-              <Route path="/" element={<Search />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/logged" element={<Enter />} />
+              <Route path="/search" element={<Search />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -1,11 +1,21 @@
-#import what we need
-from requests_html import HTMLSession
-from flask import Flask
-import json
-import yaml
-from hf_api import HFquery
+from flask import Flask, request, jsonify, session
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS, cross_origin
+from flask_session import Session
+from config import ApplicationConfig
+from models import db, User
+from NewsScraper import scrape
 
 app = Flask(__name__)
+app.config.from_object(ApplicationConfig)
+
+bcrypt = Bcrypt(app)
+CORS(app, supports_credentials=True)
+server_session = Session(app)
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def hello_world():
@@ -13,42 +23,68 @@ def hello_world():
 
 @app.route('/query/<query>')
 async def search(query):
+    result = await scrape(query)
+    return result
 
-    session = HTMLSession()
+@app.route("/@me")
+def get_current_user():
+    user_id = session.get("user_id")
+
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
     
-    #use session to get the page
-    r = session.get('https://news.google.com/search?q={}'.format(query))
+    user = User.query.filter_by(id=user_id).first()
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    }) 
 
-    #render the html, sleep=1 to give it a second to finish before moving on. scrolldown= how many times to page down on the browser, to get more results. 5 was a good number here
-    r.html.arender(sleep=1, scrolldown=1)
-    #find all the articles by using inspect element and create blank list
-    articles = r.html.find('article')
-    newslist = []
-    session.close()
+@app.route("/register", methods=["POST"])
+def register_user():
+    email = request.json["email"]
+    password = request.json["password"]
+
+    user_exists = User.query.filter_by(email=email).first() is not None
+
+    if user_exists:
+        return jsonify({"error": "User already exists"}), 409
+
+    hashed_password = bcrypt.generate_password_hash(password)
+    new_user = User(email=email, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
     
-    #loop through each article to find the title and link. try and except as repeated articles from other sources have different h tags.
-    for item in articles:
-        try:
-            newsitem = item.find('h3', first=True)
-            timestamp = item.find('time', first=True).attrs['datetime']
-            publisher = item.find('div')[1].element.find('a').text
-            title = newsitem.text
-            link = list(newsitem.absolute_links)[0]
-            # senti = HFquery(title)
-            newsarticle = {
-                'title': title,
-                'link': link, 
-                'datetime': timestamp,
-                'publisher': publisher, 
-                # 'sentiment': senti
-            }
-            newslist.append(newsarticle)
-        except:
-            pass 
-    newslist = sorted(newslist, key=lambda x:x["datetime"], reverse=True)
-    chartdata = {}
+    session["user_id"] = new_user.id
 
-    json_str = json.dumps(list(newslist))
+    return jsonify({
+        "id": new_user.id,
+        "email": new_user.email
+    })
 
-    return json_str
+@app.route("/login", methods=["POST"])
+def login_user():
+    email = request.json["email"]
+    password = request.json["password"]
 
+    user = User.query.filter_by(email=email).first()
+
+    if user is None:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    if not bcrypt.check_password_hash(user.password, password):
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    session["user_id"] = user.id
+
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    })
+
+@app.route("/logout", methods=["POST"])
+def logout_user():
+    session.pop("user_id")
+    return "200"
+
+if __name__ == "__main__":
+    app.run(debug=True)

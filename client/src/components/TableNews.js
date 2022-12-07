@@ -11,7 +11,7 @@ function TableNews(props) {
                     <thead>
                         <tr className='table-dark'>
                             <th scope="col">Title</th>
-                            <th scope="col">Publisher</th>
+                            {/* <th scope="col">Publisher</th> */}
                             <th scope="col" style={{"width":"30vh"}}>DateTime</th>
                         </tr>
                     </thead>
@@ -21,7 +21,7 @@ function TableNews(props) {
                                 <tr key={ele.title+ele.publisher+ele.datetime}>
                                     <td title={ele.link}><a href={ele.link}>{ele.title}</a></td>
                                     {/* <td className={ele.sentiment==="Negative"?"fw-bold text-danger":(ele.sentiment==="Positive"?"fw-bold text-success":null)}>{ele.sentiment}</td> */}
-                                    <td>{ele.publisher}</td>
+                                    {/* <td>{ele.publisher}</td> */}
                                     <td>{ele.datetime.split("T")[0]}</td>
                                 </tr>
                             )

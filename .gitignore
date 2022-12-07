@@ -1,8 +1,9 @@
 server/config.yaml
 server/venv
-server/venvp
+server/.env
 server/__pycache__
 server/model.sav
+server/instance
 __pycache__
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
