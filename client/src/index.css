@@ -1,7 +1,7 @@
 .main{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 20vh;
     background-color: white;
     text-align: center;
     align-content: center;
@@ -9,7 +9,14 @@
 }
 .navbarbg{
     background: linear-gradient(223deg, #070a38, #171719);
+}
 
+.thematify{
+    color: #b62f57;
+    -webkit-animation: AnimateText 5s ease infinite;
+    -moz-animation: AnimateText 5s ease infinite;
+    animation: AnimateText 5s ease infinite;
+    font-weight: bolder;
 }
 
 .fullapp{
@@ -17,9 +24,28 @@
     display: flex;
     background: linear-gradient(223deg, #b62f57, #8c00ff, #ff9900);
     background-size: 600% 600%;
-    -webkit-animation: AnimationName 20s ease infinite;
-    -moz-animation: AnimationName 20s ease infinite;
-    animation: AnimationName 20s ease infinite;
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+}
+
+@-webkit-keyframes AnimateText {
+    0%{color:#8c00ff }
+    33%{color:#b62f57 }
+    66%{color:#ff9900 }
+    100%{color:#8c00ff }
+}
+@-moz-keyframes AnimateText {
+    0%{color:#8c00ff }
+    33%{color:#b62f57 }
+    66%{color:#ff9900 }
+    100%{color:#8c00ff }
+}
+@keyframes AnimateText {
+    0%{color:#8c00ff }
+    33%{color:#b62f57 }
+    66%{color:#ff9900 }
+    100%{color:#8c00ff }
 }
 
 @-webkit-keyframes AnimationName {
