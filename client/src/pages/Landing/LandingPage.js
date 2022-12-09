@@ -24,7 +24,7 @@ function LandingPage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-12 col-md-5 col-lg-6 order-md-2">
-              <img src="https://landkit.goodthemes.co/assets/img/illustrations/illustration-2.png" class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init aos-animate" alt="..." data-aos="fade-up" data-aos-delay="100" />
+              <img src="https://landkit.goodthemes.co/assets/img/illustrations/illustration-2.png" className="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init aos-animate" alt="..." data-aos="fade-up" data-aos-delay="100" />
             </div>
             <div className="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
               {(login||register)?null:<Welcome setlogin={setlogin} setregister={setregister}/>}

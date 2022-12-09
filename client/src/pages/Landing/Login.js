@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { FcGoogle } from "react-icons/fc";
+
 
 function Signup(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const {login} = useAuth()
+  const {login, googlelogin} = useAuth()
   const [error, setError] = useState('')
   const[loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -24,6 +26,22 @@ function Signup(props) {
     }
     setLoading(false)
   }
+
+  async function googllogin(e){
+    e.preventDefault()
+    setError('')
+    try{
+      setError('')
+      setLoading(true)
+      await googlelogin()
+      navigate('/')
+    }catch (error){
+      setError(`Failed to Login: ${error.toString().split(':').pop()}`)
+    }
+    setLoading(false)
+  }
+
+
   return (
     <>
         <Card>
@@ -39,7 +57,8 @@ function Signup(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required></Form.Control>
                   </Form.Group>
-                  <Button disabled={loading} className='w-100 text-center mt-3' type='submit'>Login</Button>
+                  <Button disabled={loading} className='w-100 text-center mt-3 btn-outline-primary' type='submit'>Login</Button>
+                  <Button disabled={loading} className='w-100 text-center mt-3 btn-outline-primary' onClick={googllogin}> <FcGoogle /> Google login</Button>
                 </Form>
             </Card.Body>
         </Card>

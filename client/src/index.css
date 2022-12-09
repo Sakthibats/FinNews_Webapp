@@ -64,6 +64,21 @@
     100%{background-position:87% 0%}
 }
 
+.btn-outline-primary {
+    background-color: transparent;
+    border: #8c00ff 1px solid;
+    color: #8c00ff;
+    transition: all linear 0.3s;
+    border-radius: 10px;
+}
+
+.btn-outline-primary:hover{
+    background-color: #8c00ff;
+    color: white;
+    border: #8c00ff 1px solid;
+    border-radius: 15px;
+}
+
 .linkable{
     cursor: pointer;
     color: black;
