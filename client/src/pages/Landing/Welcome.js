@@ -15,12 +15,12 @@ function Welcome(props) {
         Build more resilient portfolios using Data
         </p>
         {currentUser ?
-        <p className='lead text-center text-md-start text-muted mb-6 mb-lg-8'>Hello there <span className='thematify'>{currentUser.email} !</span></p> :
+        <p className='lead text-center text-md-start text-muted mb-6 mb-lg-8'>Hello there <span className='thematify'>{currentUser.displayName || currentUser.email}!</span></p> :
         <div className="text-center text-md-start">
             <button className="btn btn-outline-primary shadow lift me-1" onClick={()=>props.setlogin(true)} style={{"minWidth":"100px"}}>
                 Login
             </button>
-            <button className="btn btn-outline-primary lift" onClick={()=>props.setregister(true)} style={{"minWidth":"100px"}}>
+            <button className="btn btn-outline-primary shadow lift" onClick={()=>props.setregister(true)} style={{"minWidth":"100px"}}>
                 Sign up
             </button>
         </div>}

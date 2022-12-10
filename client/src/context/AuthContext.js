@@ -22,6 +22,15 @@ export function AuthProvider({children}) {
     function logout(){
         return auth.signOut()
     }
+    function resetpw(email){
+        return auth.sendPasswordResetEmail(email)
+    }
+    function resetname(name){
+        const user = auth.currentUser
+        return user.updateProfile({
+            displayName: name
+        })
+    }
 
     function googlelogin(){
         return signInWithPopup(auth, provider).then((result) => {
@@ -33,15 +42,9 @@ export function AuthProvider({children}) {
             console.log(token, user)
             // ...
           }).catch((error) => {
-            // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-            console.log(errorCode, errorMessage, email, credential)
+            console.log(errorCode, errorMessage)
           });
     } 
 
@@ -58,7 +61,9 @@ export function AuthProvider({children}) {
         signup, 
         login, 
         logout, 
-        googlelogin
+        googlelogin,
+        resetpw,
+        resetname
     }
 
     return (
