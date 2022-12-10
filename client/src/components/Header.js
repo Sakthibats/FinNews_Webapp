@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useAuth } from '../context/AuthContext';
 import Headercontent from './Headercontent';
 
@@ -13,8 +13,8 @@ function Header() {
 
   return (
     <nav className="navbar navbar-dark align-items-end navbarbg rounded-3 mb-3 mt-2" style={{"height":"10vh"}}>
-      <div className="container-md">
-        <a className="navbar-brand fs-2" href="/">Stock Screener</a>
+      <div className="container-md" id="navbarNavDropdown">
+        <Link className="navbar-brand fs-2" to="/">Stock Screener</Link>
         {currentUser&& <Headercontent splitLocation={splitLocation} />}
       </div>
     </nav>

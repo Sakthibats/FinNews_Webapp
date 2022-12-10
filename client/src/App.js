@@ -6,6 +6,8 @@ import Enter from './pages/Enter';
 import LandingPage from './pages/Landing/LandingPage';
 import Search from './components/Search';
 import PrivateRoute from './components/PrivateRoute';
+import Portfolio from './pages/Portfolio/Portfolio';
+import ForgotPw from './pages/Landing/ForgotPw';
 
 
 function App(){
@@ -24,10 +26,13 @@ function AppContainer() {
           <Header />
           <Routes>
             <Route exact path="/" element={<PrivateRoute />} >
-              <Route exact path="/" element={<Enter/>} />
+              <Route exact path="/" element={<LandingPage/>} />
               <Route exact path="/search" element={<Search />} />
+              <Route exact path="/portfolio" element={<Portfolio />} />
+              <Route exact path="/profile" element={<Enter />} />
             </Route>
             <Route exact path="/welcome" element={<LandingPage />} />
+            <Route exact path="/forgot-pw" element={<ForgotPw />} />
           </Routes>
         </BrowserRouter>
       </div>

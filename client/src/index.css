@@ -64,7 +64,44 @@
     100%{background-position:87% 0%}
 }
 
+.btn-outline-primary {
+    background-color: transparent;
+    /* border: none; */
+    border: 1px solid #8c00ff;
+    color: #8c00ff;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-outline-primary:hover{
+    background-color: #8c00ff;
+    color: white;
+    border: 1px solid #8c00ff;
+    transform: translateY(2.5px);
+    transform:scaleX(0.99)
+
+}
+.googlebtn{
+    background-color: #ffffff ;
+    border: 1px solid #db4a39;
+    color: #db4a39;
+    transition: all ease-in-out 0.3s;
+}
+
+.googlebtn:hover{
+    background-color: #db4a39 ;
+    color: white;
+    border: 1px solid #db4a39;
+    transform: translateY(2.5px);
+    transform:scaleX(0.99)
+
+}
+
 .linkable{
     cursor: pointer;
     color: black;
+}
+
+.round{
+    border-radius: 10px;
+    overflow: hidden;
 }

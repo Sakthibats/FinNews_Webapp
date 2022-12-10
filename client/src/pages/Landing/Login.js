@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { FcGoogle } from "react-icons/fc";
+
 
 function Signup(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const {login} = useAuth()
+  const {login, googlelogin} = useAuth()
   const [error, setError] = useState('')
   const[loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -24,11 +26,27 @@ function Signup(props) {
     }
     setLoading(false)
   }
+
+  async function googllogin(e){
+    e.preventDefault()
+    setError('')
+    try{
+      setError('')
+      setLoading(true)
+      await googlelogin()
+      navigate('/')
+    }catch (error){
+      setError(`Failed to Login: ${error.toString().split(':').pop()}`)
+    }
+    setLoading(false)
+  }
+
+
   return (
     <>
         <Card>
             <Card.Body>
-                <h2 className='text-center mb-4'>Login in</h2>
+                <h2 className='text-center mb-2'>Login in</h2>
                 {error && <Alert variant='danger'>{error}</Alert>}
                 <Form onSubmit={handlesubmit}>
                   <Form.Group id="email">
@@ -39,7 +57,10 @@ function Signup(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required></Form.Control>
                   </Form.Group>
-                  <Button disabled={loading} className='w-100 text-center mt-3' type='submit'>Login</Button>
+                  <p style={{'textAlign':'right', 'margin':'6px', 'fontSize':'12px', 'color':'#006eff'}}><span role="button" onClick={()=>props.resetpw()}> Forget Password? </span></p>
+                  <Button disabled={loading} className='w-100 text-center mt-2 btn-outline-primary shadow' type='submit'>Login</Button>
+                  <hr/>
+                  <Button disabled={loading} className='w-100 text-center btn-outline-danger googlebtn shadow' onClick={googllogin}> <FcGoogle /> Sign in with Google</Button>
                 </Form>
             </Card.Body>
         </Card>
