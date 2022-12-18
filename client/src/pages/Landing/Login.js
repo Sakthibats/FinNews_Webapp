@@ -22,7 +22,7 @@ function Signup(props) {
       await login(emailRef.current.value, passwordRef.current.value)
       navigate('/')
     }catch (error){
-      setError(`Failed to Login: ${error.toString().split(':').pop()}`)
+      setError(`Failed to Login: ${error.message}`)
     }
     setLoading(false)
   }

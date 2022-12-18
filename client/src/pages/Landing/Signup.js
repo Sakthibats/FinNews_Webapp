@@ -20,12 +20,13 @@ function Signup(props) {
     }
     try{
       setError('')
+      setSuccess('')
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
       setSuccess("Account created successfully!")
     }catch (error){
       console.log()
-      setError(`Failed to Create: ${error.toString().split(':').pop()}`)
+      setError(`Failed to Create: ${error.code}`)
     }
     setLoading(false)
   }

@@ -38,9 +38,9 @@ function LandingPage() {
               </div>
               <div className="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
                 {(login||register ||forgotpw)?null:<Welcome setlogin={setlogin} setregister={setregister}/>}
-                {login?<Login wantssignup={wantssignup} resetpw={resetpw} />:null}
-                {forgotpw?<ForgotPw wantslogin={wantslogin} wantssignup={wantssignup}/>:null}
-                {register?<Signup wantslogin={wantslogin} />:null}
+                {login && <Login wantssignup={wantssignup} resetpw={resetpw} />}
+                {forgotpw && <ForgotPw wantslogin={wantslogin} wantssignup={wantssignup}/>}
+                {register && <Signup wantslogin={wantslogin} />}
               </div>
             </div>
           </div>
