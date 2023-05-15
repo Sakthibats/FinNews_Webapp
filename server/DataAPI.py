@@ -1,6 +1,6 @@
 from flask import Flask
 from NewsScraper import scrape
-from StockInfo import timeseries
+from StockInfo import timeseries, tickerOptions, quoteEndpoint
 app = Flask(__name__)
 
 @app.route("/")
@@ -15,6 +15,16 @@ async def search(query):
 @app.route('/stockinfo/<stock>')
 def TS_data(stock):
     result = timeseries(stock)
+    return result
+
+@app.route('/Utility/tickerOptions/<stock>')
+def TickerOptions(stock):
+    result = tickerOptions(stock)
+    return result
+
+@app.route('/Utility/QuoteEndpoint/<stock>')
+def QuoteEndpoint(stock):
+    result = quoteEndpoint(stock)
     return result
 
 if __name__ == "__main__":

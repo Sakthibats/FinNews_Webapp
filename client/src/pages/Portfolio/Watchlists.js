@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiFillPlusCircle } from "react-icons/ai";
 
 function Watchlists() {
+  const [Watchlist, setWatchlist] = useState([])
+  const [addStock, setAddStock] = useState(false)
+
+  console.log(addStock)
   return (
     <>  
-        <p style={{'text-align':'right', "margin":'0px', 'marginBottom':'6px' , 'marginRight':'12px'}} className='thematify linkable'> Create  new list <AiFillPlusCircle /></p>
+        <div className='d-md-flex justify-content-md-end'>
+          <p className={(addStock ? 'inprogress' : 'thematify') +" linkable"} onClick={()=>setAddStock(!addStock)}> {[["Edit List", "Create New List" ][Watchlist.length==0?1:0], "Save"][addStock ? 1 : 0]} <AiFillPlusCircle /></p>
+        </div>
         <div className='round'>
           <table className='table table-hover'>
               <thead>
@@ -18,10 +24,12 @@ function Watchlists() {
                   </tr>
               </thead>
               <tbody>
-                  
+
               </tbody>
           </table>
         </div>
+        {Watchlist.length==0?<p>No watchlists created yet. Try creating </p>:null}
+
     </>
   )
 }
