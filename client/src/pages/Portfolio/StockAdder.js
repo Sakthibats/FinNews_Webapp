@@ -15,7 +15,9 @@ function StockAdder() {
   };
 
   return (
-    <>  
+    <>
+      <div className="d-flex main rounded-3 mb-3 justify-content-start">
+        <h2 style={{'textAlign':'left', 'marginBottom':'10px'}}>New Portfolio</h2>  
         <div className='round'>
           <table className='table table-hover'>
               <thead>
@@ -39,7 +41,9 @@ function StockAdder() {
               </tbody>
           </table>
         <button className='btn thematify btn-light' onClick={handleAddRow}>Add Row</button>
+        {/* <button className='btn thematify btn-light' onClick={handleAddRow}>Save Portfolio</button> */}
         </div>
+      </div>
     </>
   )
 }

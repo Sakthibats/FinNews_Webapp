@@ -9,6 +9,12 @@ function NewStockRow({ index, handleRemoveRow }) {
     const [unit, setUnit] = React.useState('');
     const [value, setValue] = React.useState('');
 
+    const customStyles = {
+        menu: (provided, state) => ({
+          ...provided,
+          zIndex: 1, // Increase the z-index value to bring the dropdown menu forward
+        }),
+      };
 
     async function confirmChoice(name){
         setName(name.value.split('-')[1])
@@ -47,19 +53,19 @@ function NewStockRow({ index, handleRemoveRow }) {
     return (
       <tr>
         <td>
-            <AsyncSelect
+        <AsyncSelect
             cacheOptions
             defaultOptions
             loadOptions={loadOptions}
             placeholder="Search for a ticker/name"
             onChange={confirmChoice}
-            />
+            styles={customStyles} 
+        />
         </td>
         <td>
           <input className="form-control" type="text" name={`name${index}`} placeholder='Name' value={name} disabled/>
         </td>
         <td>
-            {/* assign unit state function to this input default value */}
           <input className="form-control" type="number" name={`units${index}`} placeholder='Units' value={unit} onChange={alterValue}/>
         </td>
         <td>
