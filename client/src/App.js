@@ -4,12 +4,10 @@ import Header from './components/Header';
 import { AuthProvider } from './context/AuthContext';
 import Enter from './pages/Enter';
 import LandingPage from './pages/Landing/LandingPage';
-import Search from './components/Search';
+import Search from './pages/News/Search';
 import PrivateRoute from './components/PrivateRoute';
 import Portfolio from './pages/Portfolio/Portfolio';
 import ForgotPw from './pages/Landing/ForgotPw';
-import Stock from './pages/Stock/Stock';
-
 
 function App(){
   return (
@@ -30,7 +28,7 @@ function AppContainer() {
               <Route exact path="/" element={<LandingPage/>} />
               <Route exact path="/search" element={<Search />} />
               <Route exact path="/portfolio" element={<Portfolio />} />
-              <Route exact path="/stock/:ticker" element={<Stock />} />
+              {/* <Route exact path="/stock/:ticker" element={<Stock />} /> */}
               <Route exact path="/profile" element={<Enter />} />
             </Route>
             <Route exact path="/welcome" element={<LandingPage />} />
