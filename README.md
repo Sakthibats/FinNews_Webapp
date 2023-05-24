@@ -1,6 +1,10 @@
-# FinNews_Webapp
+# FinNews_Webapp 
+### (Work in Progress - Deployment soon)
 
-(Work in Progress - Deployment soon)
+
+##### FUTURE FEATURES:
+- Automatic CAPM risk Calculator. Portfolio optimizer. 
+- NLP Based Trading Strategy creator. AI Quant Bot
 
 Current Sample Landing page
 <img width="1412" alt="Screenshot 2023-05-01 at 4 44 19 PM" src="https://user-images.githubusercontent.com/54022757/235430582-48b81d1d-e606-450a-95e9-226258e0fd44.png">
@@ -12,9 +16,5 @@ Portfolio page
 ![image](https://github.com/Sakthibats/FinNews_Webapp/assets/54022757/e5b68283-e562-433a-ab8e-1ca8281b0e73)
 
 New Sentiment feature (not up to date)
-![image](https://user-images.githubusercontent.com/54022757/197503852-d2d05601-6cdf-4f0f-82ee-5a7c8e9aada4.png)
+![image](https://github.com/Sakthibats/FinNews_Webapp/assets/54022757/e3db8936-93a3-4ea7-be83-40bb81aaa377)
 
-
-FUTURE FEATURES:
-- Automatic CAPM risk Calculator. Portfolio optimizer. 
-- NLP Based Trading Strategy creator. AI Quant Bot
