@@ -1,6 +1,10 @@
 # FinNews_Webapp 
 ### (Work in Progress - Deployment soon)
 
+#### Backend features
+- News scraping
+- Financial market prices
+- Financial math calculators
 
 ##### FUTURE FEATURES:
 - Automatic CAPM risk Calculator. Portfolio optimizer. 
