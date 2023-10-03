@@ -1,5 +1,7 @@
 import requests
 import os
+import json
+from fuzzywuzzy import fuzz
 
 key = os.environ.get("ALPHA_VANTAGE_KEY")
 
@@ -21,6 +23,27 @@ def tickerOptions(stock):
     print(data)
 
     return data
+
+def tickerOptions1(word):
+    #read data.json and filter by stock input
+    with open('Datasets/data.json', 'r') as json_file:
+        data = json.load(json_file)
+        
+        #by first letter of word and label
+        dataload = list(filter(lambda x: x['label'].startswith(word[0].upper()), data))
+
+        # Define a function to calculate the similarity score
+        def similarity_score(item):
+            # Modify this scoring as needed
+            value_similarity = fuzz.token_sort_ratio(word.lower(), item['value'].lower())
+            label_similarity = fuzz.token_sort_ratio(word.lower(), item['label'].lower())
+            return value_similarity + label_similarity
+
+        # Sort the data based on similarity score in descending order
+        sorted_data = sorted(dataload, key=similarity_score, reverse=True)
+        print(sorted_data)
+        # Return the top 20 matches
+        return sorted_data[:20]
 
 def quoteEndpoint(stock):
     print("quoteEndpoint:" + stock)

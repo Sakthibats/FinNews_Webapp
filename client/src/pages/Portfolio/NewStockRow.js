@@ -17,7 +17,8 @@ function NewStockRow({ index, handleRemoveRow }) {
       };
 
     async function confirmChoice(name){
-        setName(name.value.split('-')[1])
+        // setName(name.value.split('-')[1])
+        setName(name.value)
         const price = await fetch(`Utility/QuoteEndpoint/${name.label}`);
         const data = await price.json();
         setPrice(data["Global Quote"]["05. price"])
@@ -27,13 +28,14 @@ function NewStockRow({ index, handleRemoveRow }) {
     const loadOptions = async (inputValue) => {
         try{
             if(inputValue.length>0){
-                const response = await fetch(`/Utility/tickerOptions/${inputValue}`);
+                const response = await fetch(`/Utility/tickerOptions1/${inputValue}`);
                 const data = await response.json();
-                const options = data.bestMatches.map((match) => ({
-                value: ['1. symbol'] + '-' + match['2. name'],
-                label: match['1. symbol'],
-                }));
-                return options;
+                return data
+                // const options = data.bestMatches.map((match) => ({
+                // value: ['1. symbol'] + '-' + match['2. name'],
+                // label: match['1. symbol'],
+                // }));
+                // return options;
             }
         }catch(err){
             console.log(err)

@@ -3,14 +3,17 @@ import NewStockRow from './NewStockRow'
 
 function StockAdder() {
   const [addList, setAddList] = useState([])
+  const [num, setnum] = useState(0)
 
   const handleAddRow = () => {
-    setAddList([...addList, {}]);
+    setAddList([...addList, {"key":num}]);
+    setnum(num+1)
   };
 
-  const handleRemoveRow = (index) => {
-    const newList = [...addList];
-    newList.splice(index, 1);
+  const handleRemoveRow = (key) => {
+    console.log(key, "removing")
+    var newList = [...addList];
+    newList= newList.filter((item) => item.key !== key);
     setAddList(newList);
   };
 
@@ -33,8 +36,8 @@ function StockAdder() {
               <tbody>
                 {addList.map((item, index) => (
                   <NewStockRow
-                    key={index}
-                    index={index}
+                    key={item.key}
+                    index={item.key}
                     handleRemoveRow={handleRemoveRow}
                   />
                 ))}

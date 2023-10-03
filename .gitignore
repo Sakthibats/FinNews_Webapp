@@ -1,10 +1,10 @@
 server/venv
-server/_env.local
 server/__pycache__
 server/instance
 server/ServiceAccountKey.json
 __pycache__
-
+*.env.local
+*.json
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -12,8 +12,8 @@ client/.pnp
 client/node_modules
 client/.pnp.js
 
-client/package-lock.json
 
+client/package-lock.json
 # testing
 client/coverage
 
