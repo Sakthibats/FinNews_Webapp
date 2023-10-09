@@ -9,7 +9,7 @@ On the other side we have erratic retail traders who treat investing like a day 
 With some knowledge about some traditional financial math, the regular retail investor would be able to build resiliant and risk balanced portfolios on their own without incurring deadly fees. 🔥🔥🔥
 
 #### The Goal
-The goal of this project is to increase awareness about how financial products are built using traditional financial theories (CAPM, Efficient Markets etc) with the help of technology and a user friendly interface to learn from. 🚀🚀🚀
+Help retail investors build risk balanced investment portfolio using traditional financial theories (CAPM, Efficient Markets etc) with the help of technology and a user friendly interface to learn from. 🚀🚀🚀
 
 #### Features and technical capabilities
 - News scraping (web scrapeing)
