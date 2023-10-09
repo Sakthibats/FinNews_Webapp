@@ -37,11 +37,13 @@ def tickerOptions1(word):
             # Modify this scoring as needed
             value_similarity = fuzz.token_sort_ratio(word.lower(), item['value'].lower())
             label_similarity = fuzz.token_sort_ratio(word.lower(), item['label'].lower())
-            return value_similarity + label_similarity
+            if len(item)>3:
+                return value_similarity*1.5 + label_similarity
+            else:
+                return value_similarity + label_similarity*1.5
 
         # Sort the data based on similarity score in descending order
         sorted_data = sorted(dataload, key=similarity_score, reverse=True)
-        print(sorted_data)
         # Return the top 20 matches
         return sorted_data[:20]
 

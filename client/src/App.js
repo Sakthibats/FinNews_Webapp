@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import { AuthProvider } from './context/AuthContext';
+import { FuncProvider } from './context/FunctionalContext';
 import Enter from './pages/Enter';
 import LandingPage from './pages/Landing/LandingPage';
 import Search from './pages/News/Search';
@@ -12,7 +13,9 @@ import ForgotPw from './pages/Landing/ForgotPw';
 function App(){
   return (
     <AuthProvider>
-      <AppContainer />
+      <FuncProvider>
+        <AppContainer />  
+      </FuncProvider>
     </AuthProvider>
   )
 }
