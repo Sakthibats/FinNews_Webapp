@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
 import NewStockRow from './NewStockRow'
 import { useFunc } from '../../context/FunctionalContext'
+import { AiTwotoneSave } from "react-icons/ai";
+import Portfolio from './Portfolio';
+
 
 function StockAdder() {
-  const [addList, setAddList] = useState([])
-  const [num, setnum] = useState(0)
-  const {setPortfolio} = useFunc()
+  const {setPortfolio, Portfolio, num, setnum} = useFunc()
+  const [addList, setAddList] = useState(Portfolio)
+  const [edit, setEdit] = useState(false)
+
+  console.log(addList)
 
   const handleAddRow = () => {
-    addList.push({"key":num, "index":num, "ticker":'', "name":'', "price":'', unit:''})
+    setEdit(true)
+    addList.push({"key":num, "index":num, "ticker":'', "name":'', "price":'', "unit":''})
     setnum(num+1)
   };
 
@@ -39,13 +45,26 @@ function StockAdder() {
   }
 
   const savePortfolio = () => {
-    setPortfolio(addList)
+    setEdit(false)
+    const filteredList = addList.filter(item => item.ticker !== '');
+    console.log("ADDLIST COMING")
+    console.log(addList)
+    console.log("FILTERED LIST COMING")
+    console.log(filteredList)
+    console.log("PORTFOLIO COMING")
+    console.log(Portfolio)
+    setPortfolio(filteredList)
+    setAddList(filteredList)
   }
 
   return (
     <>
       <div className="d-flex main rounded-3 mb-3 justify-content-start">
-        <h2 style={{'textAlign':'left', 'marginBottom':'10px'}}>New Portfolio</h2>  
+        <div className="d-flex justify-content-between mb-2">
+          <h2>New Portfolio</h2>
+          {edit ? <button className='btn thematify btn-light' onClick={savePortfolio}>Save <AiTwotoneSave/> </button> : <button className='btn thematify btn-light' onClick={handleAddRow}>Edit</button>}
+        </div>
+        
         <div className='round'>
           <table className='table table-hover'>
               <thead>
@@ -68,12 +87,12 @@ function StockAdder() {
                     handlestats={handlestats}
                     checkTicker={checkTicker}
                     checkKey={checkKey}
+                    editmode={edit}
                   />
                 ))}
               </tbody>
           </table>
-        <button className='btn thematify btn-light' onClick={handleAddRow}>Add Row</button>
-        <button className='btn thematify btn-light' onClick={savePortfolio}>Save Portfolio</button>
+          {edit ? <button className='btn thematify btn-light' onClick={handleAddRow}>Add row</button>: null}
         </div>
       </div>
     </>

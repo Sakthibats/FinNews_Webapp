@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import AsyncSelect from 'react-select/async';
 
 
-function NewStockRow({ stats, handleRemoveRow, handleAddRow, handlestats, checkTicker, checkKey}) {
+function NewStockRow({ stats, handleRemoveRow, handleAddRow, handlestats, checkTicker, checkKey, editmode}) {
 
-    const [name, setName] = React.useState('');
-    const [price, setPrice] = React.useState('');
-    const [unit, setUnit] = React.useState('');
-    const [value, setValue] = React.useState('');
+    const [name, setName] = React.useState(stats.name);
+    const [price, setPrice] = React.useState(stats.price);
+    const [unit, setUnit] = React.useState(stats.unit);
+    const [value, setValue] = React.useState(stats.price*stats.unit);
 
     const customStyles = {
         menu: (provided, state) => ({
@@ -57,8 +57,10 @@ function NewStockRow({ stats, handleRemoveRow, handleAddRow, handlestats, checkT
         }else{
           const newUnit = event.target.value;
           setUnit(newUnit);
+          handlestats(stats.index, stats.ticker, name, price, newUnit) 
         }
     }
+    console.log(stats)
 
     return (
       <tr>
@@ -70,13 +72,14 @@ function NewStockRow({ stats, handleRemoveRow, handleAddRow, handlestats, checkT
             placeholder="Search for a ticker/name"
             onChange={confirmChoice}
             styles={customStyles} 
+            defaultInputValue={stats.ticker}
         />
         </td>
         <td>
           <input className="form-control" type="text" name={`name${stats.key}`} placeholder='Name' value={name} disabled/>
         </td>
         <td>
-          <input className="form-control" type="number" name={`units${stats.key}`} placeholder='Units' value={unit} onChange={alterValue}/>
+          <input className="form-control" type="number" name={`units${stats.key}`} placeholder='Units' defaultValue={unit} onChange={alterValue}/>
         </td>
         <td>
           <input className="form-control" type="text" name={`Price${stats.key}`} placeholder='Price' value={price !==-1 ? price : 'Loading...'} disabled/>
@@ -85,7 +88,7 @@ function NewStockRow({ stats, handleRemoveRow, handleAddRow, handlestats, checkT
           <input className="form-control" type="text" name={`value${stats.key}`} placeholder='Value' value={value} disabled/>
         </td>
         <td>
-          <button className='btn btn-danger' onClick={() => handleRemoveRow(stats.key)}>Remove</button>
+          {editmode? <button className='btn btn-danger' onClick={() => handleRemoveRow(stats.key)}>Remove</button>: <h4>-</h4>}
         </td>
       </tr>
     );

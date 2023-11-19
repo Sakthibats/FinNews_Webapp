@@ -8,6 +8,7 @@ export function useFunc(){
 
 export function FuncProvider({children}) {
     const [Portfolio, setPortfolio] = useState([])
+    const [num, setnum] = useState(0)
     
     useEffect(()=>{
         console.log(Portfolio)
@@ -16,7 +17,9 @@ export function FuncProvider({children}) {
 
     const value= {
         Portfolio, 
-        setPortfolio
+        setPortfolio, 
+        setnum,
+        num
     }
 
     return (
