@@ -1,5 +1,8 @@
 # FinNews_Webapp 
 
+#### The What
+FinNews Webapp is designed as a portfolio health monitoring tool. It features Modern Portfolio Theory charts and includes a one-click portfolio rebalancing tool to automatically adjust portfolio proportions.
+
 #### The Why?
 As a retail investor we are often pitched the watered down, high fee financial products such as insurance, robo advisors and middlemen fund managers who charge a fee to buy funds that are already publicly availble for retail investors (These funds also charge a separate fee on their own...double/triple fee sigh). 💲💲💲
 
