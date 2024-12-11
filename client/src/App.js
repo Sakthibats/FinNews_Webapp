@@ -5,10 +5,9 @@ import { AuthProvider } from './context/AuthContext';
 import { FuncProvider } from './context/FunctionalContext';
 import Enter from './pages/Enter';
 import LandingPage from './pages/Landing/LandingPage';
-import Search from './pages/News/Search';
 import PrivateRoute from './components/PrivateRoute';
-import Portfolio from './pages/Portfolio/Portfolio';
 import ForgotPw from './pages/Landing/ForgotPw';
+import Portfolio from './pages/Portfolio/Portfolio';
 
 function App(){
   return (
@@ -29,10 +28,8 @@ function AppContainer() {
           <Routes>
             <Route exact path="/" element={<PrivateRoute />} >
               <Route exact path="/" element={<LandingPage/>} />
-              <Route exact path="/search" element={<Search />} />
-              <Route exact path="/portfolio" element={<Portfolio />} />
-              {/* <Route exact path="/stock/:ticker" element={<Stock />} /> */}
               <Route exact path="/profile" element={<Enter />} />
+              <Route exact path="/portfolio" element={<Portfolio />} />
             </Route>
             <Route exact path="/welcome" element={<LandingPage />} />
             <Route exact path="/forgot-pw" element={<ForgotPw />} />

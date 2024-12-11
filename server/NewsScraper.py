@@ -14,6 +14,7 @@ async def scrape(query):
     articles = r.html.find('article')
     newslist = []
     session.close()
+    print(articles)
     #loop through each article to find the title and link. try and except as repeated articles from other sources have different h tags.
     for item in articles:
         try:
@@ -29,6 +30,7 @@ async def scrape(query):
                 'datetime': timestamp,
                 # 'publisher': "publisher", 
             }
+            print(newslist)
             newslist.append(newsarticle)
         except Exception as e:
             # print(e)

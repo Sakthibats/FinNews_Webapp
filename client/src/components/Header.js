@@ -14,7 +14,7 @@ function Header() {
   return (
     <nav className="navbar navbar-dark align-items-end navbarbg rounded-3 mb-3 mt-2" style={{"height":"10vh"}}>
       <div className="container-md" id="navbarNavDropdown">
-        <Link className="navbar-brand fs-2" to="/">Stock Screener</Link>
+        <Link className="navbar-brand fs-2" to="/">AI Screener</Link>
         {currentUser&& <Headercontent splitLocation={splitLocation} />}
       </div>
     </nav>

@@ -62,8 +62,7 @@ body {
     50%{color:#ffa200 }
     100%{color:#2834dc }
 }
-
-  
+ 
 
 @-webkit-keyframes AnimateText {
     0%{color:#8c00ff }
@@ -102,8 +101,8 @@ body {
 
 .btn-outline-primary {
     background-color: transparent;
-    border: none;
-    /* border: 1px solid #8c00ff; */
+    /* border: none; */
+    border: 1px solid #8c00ff;
     color: #8c00ff;
     transition: all ease-in-out 0.3s;
 }
@@ -111,7 +110,7 @@ body {
 .btn-outline-primary:hover{
     background-color: #8c00ff;
     color: white;
-    /* border: 1px solid #8c00ff; */
+    border: 1px solid #8c00ff;
     transform: translateY(2.5px);
     transform:scaleX(0.99)
 
@@ -144,4 +143,11 @@ body {
 input.form-control:active, input.form-control:focus {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.returns{
+    background-color: rgb(234, 234, 248);
+
+    
+    
 }
