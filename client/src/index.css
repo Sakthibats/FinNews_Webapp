@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(18, 18, 18, 0.87);
-  background-color: #fdf7f7;
+  background-color: #f4fbfb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,40 +14,51 @@
 }
 
 .rounded{
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
 .logo{
-  font-size: 26px;
+  font-size: 1rem;
 }
 .colorify{
   color: #ffffff;
 }
 
 .colorify:hover{
-  -webkit-animation: AnimateText 8s ease infinite;
-  -moz-animation: AnimateText 8s ease infinite;
-  animation: AnimateText 8s ease infinite;
+  -webkit-animation: AnimateText 3s ease infinite;
+  -moz-animation: AnimateText 3s ease infinite;
+  animation: AnimateText 3s ease infinite;
   font-weight: bolder;
   transition: 2s;
 }
 
 @-webkit-keyframes AnimateText {
   0%{color:#ffffff }
-  33%{color:#b62f57 }
-  66%{color:#ff9900 }
-  100%{color:#8c00ff }
+  20%{color:#b62f57 }
+  40%{color:#ff9900 }
+  85%{color:#8c00ff }
+  100%{color:#ffffff }
 }
 @-moz-keyframes AnimateText {
   0%{color:#ffffff }
-  33%{color:#b62f57 }
-  66%{color:#ff9900 }
-  100%{color:#8c00ff }
+  20%{color:#b62f57 }
+  40%{color:#ff9900 }
+  85%{color:#8c00ff }
+  100%{color:#ffffff }
 }
 @keyframes AnimateText {
   0%{color:#ffffff }
-  33%{color:#b62f57 }
-  66%{color:#ff9900 }
-  100%{color:#8c00ff }
+  20%{color:#b62f57 }
+  40%{color:#ff9900 }
+  85%{color:#8c00ff }
+  100%{color:#ffffff }
+}
+
+.white{
+  background-color: #ffffff;
+}
+
+.themecol{
+  background-color: #3A7CA5 ;
 }
