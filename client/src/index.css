@@ -14,7 +14,7 @@
 }
 
 .rounded{
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -57,6 +57,7 @@
 
 .white{
   background-color: #ffffff;
+  color: black;
 }
 
 .themecol{
