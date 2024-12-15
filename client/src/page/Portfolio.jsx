@@ -10,7 +10,7 @@ function Portfolio() {
 
   return (
     <div class="mx-6 full-height">
-      <div className='px-4 has-text-left'> 
+      <div className='container px-4 has-text-left'> 
         <h1>Efficient Frontier</h1>
       </div>
       {portfolioExists? <EfficientFrontier />: <EmptyPortfolio />}
